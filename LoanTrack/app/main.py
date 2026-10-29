@@ -68,7 +68,14 @@ async def startup():
 @app.get("/", include_in_schema=False)
 async def root():
     """Serve the web UI."""
-    return FileResponse(os.path.join(STATIC_DIR, "index.html"))
+    return FileResponse(
+        os.path.join(STATIC_DIR, "index.html"),
+        headers={
+            "Cache-Control": "no-cache, no-store, must-revalidate",
+            "Pragma": "no-cache",
+            "Expires": "0",
+        },
+    )
 
 
 @app.get("/health", response_model=HealthResponse)
