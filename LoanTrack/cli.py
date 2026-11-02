@@ -45,13 +45,14 @@ def cmd_predict(args):
 
 
 def cmd_serve(args):
-    """Launch FastAPI dev server."""
+    """Launch FastAPI server."""
     import uvicorn
+    is_dev = args.host in ("127.0.0.1", "localhost") and "PORT" not in os.environ
     uvicorn.run(
         "app.main:app",
         host=args.host,
         port=args.port,
-        reload=True,
+        reload=is_dev,
     )
 
 
@@ -80,9 +81,11 @@ def main():
     p_pred.add_argument("--no-log", dest="log", action="store_false")
 
     # ── serve ──
+    default_host = os.environ.get("HOST", "0.0.0.0" if "PORT" in os.environ else "127.0.0.1")
+    default_port = int(os.environ.get("PORT", 8000))
     p_serve = sub.add_parser("serve", help="Start the web server")
-    p_serve.add_argument("--host", type=str, default="127.0.0.1")
-    p_serve.add_argument("--port", type=int, default=8000)
+    p_serve.add_argument("--host", type=str, default=default_host)
+    p_serve.add_argument("--port", type=int, default=default_port)
 
     args = parser.parse_args()
 

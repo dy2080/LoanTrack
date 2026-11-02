@@ -17,4 +17,4 @@ RUN python train.py || true
 
 EXPOSE 8000
 
-CMD ["python", "cli.py", "serve", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["python", "cli.py", "serve"]

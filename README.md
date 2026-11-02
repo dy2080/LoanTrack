@@ -249,6 +249,19 @@ Access the application at `http://localhost:8000`.
 
 ---
 
+## 🚂 Railway Cloud Deployment
+
+You can deploy LoanTrack to Railway in a few clicks:
+
+1. Log in to [Railway](https://railway.com/) with GitHub.
+2. Click **+ New Project** → **Deploy from GitHub repo** → select `LoanTrack`.
+3. Go to the project **Settings** tab:
+   - Set **Root Directory** to `/LoanTrack`
+   - In **Networking**, click **Generate Domain** to get your public HTTPS URL (e.g. `https://loantrack.up.railway.app`).
+4. Railway will automatically build the container and deploy the app!
+
+---
+
 ## 👥 Contributing
 
 1. Fork the Project
@@ -262,3 +275,4 @@ Access the application at `http://localhost:8000`.
 ## 📄 License
 
 Distributed under the MIT License. See `LICENSE` for more information.
+
